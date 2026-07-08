@@ -1,0 +1,518 @@
+{
+  "input": {
+    "venue": "bnext-devnotes",
+    "opts": {
+      "yes": true,
+      "resume": false,
+      "maxSizeWebp": 3145728,
+      "skipRebuild": false,
+      "collection": "nucleus-contrib"
+    }
+  },
+  "key": "nucleus-devnote-core-Base_Cell",
+  "source": {},
+  "work": {
+    "id": "019b13f9-1ec6-757c-b5ed-68cdd8e91fb0",
+    "date_created": "2025-12-19T22:04:35.797Z"
+  },
+  "workVersion": {
+    "id": "019b38a5-ab0e-7d91-82c5-29bef40c1817",
+    "date_created": "2025-12-19T22:05:39.982Z"
+  },
+  "submission": {
+    "id": "019b38a5-ac5c-7825-9892-ec44e9ed62ee",
+    "date_created": "2025-12-19T22:05:40.296Z"
+  },
+  "submissionVersion": {
+    "id": "019b38a5-ac5c-7825-9892-ec43ad2dfbbc",
+    "date_created": "2025-12-19T22:05:40.296Z"
+  },
+  "venue": "bnext-devnotes",
+  "kind": {
+    "id": "01933f38-4d0d-72dd-b28f-abb5435c9e30",
+    "date_created": "2024-11-18T12:21:14.637Z",
+    "date_modified": "2025-10-08T20:30:01.519Z",
+    "name": "devnote",
+    "content": {
+      "title": "DevNote",
+      "description": "Developer Notes (DevNotes) are a concise form of scientific communication designed to rapidly share insights and results of interest to the Nucleus and broader synthetic cell communities."
+    },
+    "default": false,
+    "checks": [
+      {
+        "id": "authors-exist"
+      },
+      {
+        "id": "authors-corresponding"
+      },
+      {
+        "id": "authors-have-orcid",
+        "optional": true
+      },
+      {
+        "id": "doi-exists"
+      },
+      {
+        "id": "authors-have-affiliations",
+        "optional": true
+      },
+      {
+        "id": "keywords-defined",
+        "optional": true
+      },
+      {
+        "id": "keywords-unique",
+        "optional": true
+      }
+    ],
+    "links": {
+      "self": "https://sites.curvenote.com/v1/sites/bnext-devnotes/kinds/01933f38-4d0d-72dd-b28f-abb5435c9e30",
+      "site": "https://sites.curvenote.com/v1/sites/bnext-devnotes"
+    }
+  },
+  "report": [
+    {
+      "id": "authors-exist",
+      "title": "Authors",
+      "purpose": "ensure authors are defined",
+      "tags": [
+        "frontmatter",
+        "authors"
+      ],
+      "status": "pass",
+      "message": "Found 1 authors",
+      "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+      "nice": "Authors found 👋"
+    },
+    {
+      "id": "authors-corresponding",
+      "title": "Corresponding Author",
+      "purpose": "ensure there is a corresponding author",
+      "tags": [
+        "frontmatter",
+        "authors"
+      ],
+      "status": "pass",
+      "message": "Surendra Yadav provided an email: <surendra@bnext.bio>",
+      "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+      "nice": "Corresponding author is set 📧"
+    },
+    {
+      "id": "authors-have-orcid",
+      "title": "ORCID",
+      "purpose": "ensure each author has an ORCID",
+      "tags": [
+        "frontmatter",
+        "authors"
+      ],
+      "optional": true,
+      "status": "pass",
+      "message": "Surendra Yadav has an ORCID",
+      "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+      "nice": "Thanks for adding ORCIDs, robots love orchids 🤖💚🌸"
+    },
+    {
+      "id": "doi-exists",
+      "title": "DOI Exists",
+      "purpose": "ensure all citations have valid DOI",
+      "options": [
+        {
+          "id": "fix",
+          "type": "boolean",
+          "title": "Fix DOIs",
+          "description": "Propose alternatives for missing/invalid DOIs"
+        }
+      ],
+      "tags": [
+        "content",
+        "citation"
+      ],
+      "status": "pass",
+      "message": "Citation has valid DOI: Yadav_2025",
+      "note": "Citation DOI: 10.63765/fppr8928",
+      "nice": "citation valid 🔗"
+    },
+    {
+      "id": "authors-have-affiliations",
+      "title": "Author Affiliations",
+      "purpose": "ensure each author has an affiliation",
+      "tags": [
+        "frontmatter",
+        "authors"
+      ],
+      "optional": true,
+      "status": "pass",
+      "message": "Surendra Yadav has an affiliation",
+      "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+      "nice": "All authors have affiliations 🏫"
+    },
+    {
+      "id": "keywords-defined",
+      "title": "Keywords",
+      "purpose": "ensure keywords exist",
+      "tags": [
+        "frontmatter",
+        "keywords"
+      ],
+      "optional": true,
+      "status": "pass",
+      "message": "Found 4 keywords",
+      "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+      "note": "Keywords: \"Cytosol\", \"PURE\", \"Base Cell\", \"Developer Cell\"",
+      "nice": "Keywords added 🔑"
+    },
+    {
+      "id": "keywords-unique",
+      "title": "Unique Keywords",
+      "purpose": "ensure the keywords are unique",
+      "tags": [
+        "frontmatter",
+        "keywords"
+      ],
+      "optional": true,
+      "status": "pass",
+      "message": "First time keyword \"Cytosol\" encountered",
+      "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+      "nice": "Keywords are unique 🔐"
+    },
+    {
+      "id": "keywords-unique",
+      "title": "Unique Keywords",
+      "purpose": "ensure the keywords are unique",
+      "tags": [
+        "frontmatter",
+        "keywords"
+      ],
+      "optional": true,
+      "status": "pass",
+      "message": "First time keyword \"PURE\" encountered",
+      "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+      "nice": "Keywords are unique 🔐"
+    },
+    {
+      "id": "keywords-unique",
+      "title": "Unique Keywords",
+      "purpose": "ensure the keywords are unique",
+      "tags": [
+        "frontmatter",
+        "keywords"
+      ],
+      "optional": true,
+      "status": "pass",
+      "message": "First time keyword \"Base Cell\" encountered",
+      "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+      "nice": "Keywords are unique 🔐"
+    },
+    {
+      "id": "keywords-unique",
+      "title": "Unique Keywords",
+      "purpose": "ensure the keywords are unique",
+      "tags": [
+        "frontmatter",
+        "keywords"
+      ],
+      "optional": true,
+      "status": "pass",
+      "message": "First time keyword \"Developer Cell\" encountered",
+      "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+      "nice": "Keywords are unique 🔐"
+    }
+  ],
+  "job": {
+    "id": "019b38a5-9f7f-7a42-9c52-a4936c1c7e0c",
+    "date_created": "2025-12-19T22:05:37.024Z",
+    "date_modified": "2025-12-19T22:05:41.076Z",
+    "job_type": "CLI_CHECK",
+    "status": "COMPLETED",
+    "payload": {
+      "key": "nucleus-devnote-core-Base_Cell",
+      "kind": {
+        "id": "01933f38-4d0d-72dd-b28f-abb5435c9e30",
+        "name": "devnote",
+        "links": {
+          "self": "https://sites.curvenote.com/v1/sites/bnext-devnotes/kinds/01933f38-4d0d-72dd-b28f-abb5435c9e30",
+          "site": "https://sites.curvenote.com/v1/sites/bnext-devnotes"
+        },
+        "checks": [
+          {
+            "id": "authors-exist"
+          },
+          {
+            "id": "authors-corresponding"
+          },
+          {
+            "id": "authors-have-orcid",
+            "optional": true
+          },
+          {
+            "id": "doi-exists"
+          },
+          {
+            "id": "authors-have-affiliations",
+            "optional": true
+          },
+          {
+            "id": "keywords-defined",
+            "optional": true
+          },
+          {
+            "id": "keywords-unique",
+            "optional": true
+          }
+        ],
+        "content": {
+          "title": "DevNote",
+          "description": "Developer Notes (DevNotes) are a concise form of scientific communication designed to rapidly share insights and results of interest to the Nucleus and broader synthetic cell communities."
+        },
+        "default": false,
+        "date_created": "2024-11-18T12:21:14.637Z",
+        "date_modified": "2025-10-08T20:30:01.519Z"
+      },
+      "site": "bnext-devnotes",
+      "source": {},
+      "collection": {
+        "id": "01933fca-7be4-7181-816a-926cd8d2ee98",
+        "name": "nucleus-contrib",
+        "open": true,
+        "slug": "nucleus-contrib",
+        "kinds": [
+          {
+            "id": "01933f38-4d0d-72dd-b28f-abb5435c9e30",
+            "name": "devnote",
+            "links": {
+              "self": "https://sites.curvenote.com/v1/sites/bnext-devnotes/kinds/01933f38-4d0d-72dd-b28f-abb5435c9e30",
+              "site": "https://sites.curvenote.com/v1/sites/bnext-devnotes"
+            },
+            "content": {
+              "title": "DevNote",
+              "description": "Developer Notes (DevNotes) are a concise form of scientific communication designed to rapidly share insights and results of interest to the Nucleus and broader synthetic cell communities."
+            },
+            "default": false
+          }
+        ],
+        "links": {
+          "self": "https://sites.curvenote.com/v1/sites/bnext-devnotes/collections/01933fca-7be4-7181-816a-926cd8d2ee98",
+          "site": "https://sites.curvenote.com/v1/sites/bnext-devnotes"
+        },
+        "content": {
+          "title": "Nucleus Community Contributions",
+          "description": "The Nucleus Community Contributions contains modules, documentation, and protocols shared by contributors in the community and outside of the main Nucleus distribution.   User contributions have not been validated by more than one lab (to our knowledge) and are not part of the core distribution. They might contain errors and often parts might be available only under UBMTA. Popular contributions might be integrated into the Core distribution with materials being made available under OpenMTA. Reach out to us if you’d like to share your work!"
+        },
+        "default": true,
+        "workflow": "SIMPLE",
+        "date_created": "2024-11-18T15:00:54.884Z",
+        "date_modified": "2025-04-02T20:24:07.838Z",
+        "num_published": 14
+      }
+    },
+    "results": {
+      "cdnKey": "019b38a5-a403-7e3b-9531-c81a0d3807fb",
+      "checks": {
+        "kind": {
+          "id": "01933f38-4d0d-72dd-b28f-abb5435c9e30",
+          "name": "devnote",
+          "links": {
+            "self": "https://sites.curvenote.com/v1/sites/bnext-devnotes/kinds/01933f38-4d0d-72dd-b28f-abb5435c9e30",
+            "site": "https://sites.curvenote.com/v1/sites/bnext-devnotes"
+          },
+          "checks": [
+            {
+              "id": "authors-exist"
+            },
+            {
+              "id": "authors-corresponding"
+            },
+            {
+              "id": "authors-have-orcid",
+              "optional": true
+            },
+            {
+              "id": "doi-exists"
+            },
+            {
+              "id": "authors-have-affiliations",
+              "optional": true
+            },
+            {
+              "id": "keywords-defined",
+              "optional": true
+            },
+            {
+              "id": "keywords-unique",
+              "optional": true
+            }
+          ],
+          "content": {
+            "title": "DevNote",
+            "description": "Developer Notes (DevNotes) are a concise form of scientific communication designed to rapidly share insights and results of interest to the Nucleus and broader synthetic cell communities."
+          },
+          "default": false,
+          "date_created": "2024-11-18T12:21:14.637Z",
+          "date_modified": "2025-10-08T20:30:01.519Z"
+        },
+        "venue": "bnext-devnotes",
+        "report": [
+          {
+            "id": "authors-exist",
+            "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+            "nice": "Authors found 👋",
+            "tags": [
+              "frontmatter",
+              "authors"
+            ],
+            "title": "Authors",
+            "status": "pass",
+            "message": "Found 1 authors",
+            "purpose": "ensure authors are defined"
+          },
+          {
+            "id": "authors-corresponding",
+            "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+            "nice": "Corresponding author is set 📧",
+            "tags": [
+              "frontmatter",
+              "authors"
+            ],
+            "title": "Corresponding Author",
+            "status": "pass",
+            "message": "Surendra Yadav provided an email: <surendra@bnext.bio>",
+            "purpose": "ensure there is a corresponding author"
+          },
+          {
+            "id": "authors-have-orcid",
+            "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+            "nice": "Thanks for adding ORCIDs, robots love orchids 🤖💚🌸",
+            "tags": [
+              "frontmatter",
+              "authors"
+            ],
+            "title": "ORCID",
+            "status": "pass",
+            "message": "Surendra Yadav has an ORCID",
+            "purpose": "ensure each author has an ORCID",
+            "optional": true
+          },
+          {
+            "id": "doi-exists",
+            "nice": "citation valid 🔗",
+            "note": "Citation DOI: 10.63765/fppr8928",
+            "tags": [
+              "content",
+              "citation"
+            ],
+            "title": "DOI Exists",
+            "status": "pass",
+            "message": "Citation has valid DOI: Yadav_2025",
+            "options": [
+              {
+                "id": "fix",
+                "type": "boolean",
+                "title": "Fix DOIs",
+                "description": "Propose alternatives for missing/invalid DOIs"
+              }
+            ],
+            "purpose": "ensure all citations have valid DOI"
+          },
+          {
+            "id": "authors-have-affiliations",
+            "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+            "nice": "All authors have affiliations 🏫",
+            "tags": [
+              "frontmatter",
+              "authors"
+            ],
+            "title": "Author Affiliations",
+            "status": "pass",
+            "message": "Surendra Yadav has an affiliation",
+            "purpose": "ensure each author has an affiliation",
+            "optional": true
+          },
+          {
+            "id": "keywords-defined",
+            "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+            "nice": "Keywords added 🔑",
+            "note": "Keywords: \"Cytosol\", \"PURE\", \"Base Cell\", \"Developer Cell\"",
+            "tags": [
+              "frontmatter",
+              "keywords"
+            ],
+            "title": "Keywords",
+            "status": "pass",
+            "message": "Found 4 keywords",
+            "purpose": "ensure keywords exist",
+            "optional": true
+          },
+          {
+            "id": "keywords-unique",
+            "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+            "nice": "Keywords are unique 🔐",
+            "tags": [
+              "frontmatter",
+              "keywords"
+            ],
+            "title": "Unique Keywords",
+            "status": "pass",
+            "message": "First time keyword \"Cytosol\" encountered",
+            "purpose": "ensure the keywords are unique",
+            "optional": true
+          },
+          {
+            "id": "keywords-unique",
+            "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+            "nice": "Keywords are unique 🔐",
+            "tags": [
+              "frontmatter",
+              "keywords"
+            ],
+            "title": "Unique Keywords",
+            "status": "pass",
+            "message": "First time keyword \"PURE\" encountered",
+            "purpose": "ensure the keywords are unique",
+            "optional": true
+          },
+          {
+            "id": "keywords-unique",
+            "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+            "nice": "Keywords are unique 🔐",
+            "tags": [
+              "frontmatter",
+              "keywords"
+            ],
+            "title": "Unique Keywords",
+            "status": "pass",
+            "message": "First time keyword \"Base Cell\" encountered",
+            "purpose": "ensure the keywords are unique",
+            "optional": true
+          },
+          {
+            "id": "keywords-unique",
+            "file": "/home/rstudio/devnotes/Base_Cell/curvenote.yml",
+            "nice": "Keywords are unique 🔐",
+            "tags": [
+              "frontmatter",
+              "keywords"
+            ],
+            "title": "Unique Keywords",
+            "status": "pass",
+            "message": "First time keyword \"Developer Cell\" encountered",
+            "purpose": "ensure the keywords are unique",
+            "optional": true
+          }
+        ]
+      },
+      "workId": "019b13f9-1ec6-757c-b5ed-68cdd8e91fb0",
+      "submissionId": "019b38a5-ac5c-7825-9892-ec44e9ed62ee",
+      "workVersionId": "019b38a5-ab0e-7d91-82c5-29bef40c1817",
+      "submissionVersionId": "019b38a5-ac5c-7825-9892-ec43ad2dfbbc"
+    },
+    "messages": [
+      "Uploading work files to cdn",
+      "Creating new work and submission entry",
+      "Submission completed"
+    ],
+    "links": {
+      "self": "https://sites.curvenote.com/v1/jobs/019b38a5-9f7f-7a42-9c52-a4936c1c7e0c"
+    }
+  },
+  "buildUrl": "https://sites.curvenote.com/build/019b38a5-9f7f-7a42-9c52-a4936c1c7e0c"
+}

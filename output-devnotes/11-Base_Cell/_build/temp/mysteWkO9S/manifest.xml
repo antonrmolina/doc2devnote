@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE manifest PUBLIC "-//MECA//DTD Manifest v1.0//en" "https://meca.zip/manifest-1.0.dtd">
+<manifest manifest-version="1" xmlns="https://manuscriptexchange.org/schema/manifest" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <item item-type="article-source">
+    <instance media-type="text/yaml" xlink:href="bundle/curvenote.yml"/>
+  </item>
+  <item item-type="article-source-environment">
+    <instance media-type="text/yaml" xlink:href="bundle/environment.yml"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/x-ipynb+json" xlink:href="bundle/src/20250220-analysis.ipynb"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="" xlink:href="bundle/src/cdk/__init__.py"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="" xlink:href="bundle/src/cdk/logging/__init__.py"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="" xlink:href="bundle/src/cdk/__pycache__/__init__.cpython-312.pyc"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="" xlink:href="bundle/src/cdk/logging/__pycache__/__init__.cpython-312.pyc"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="" xlink:href="bundle/src/cdk/analysis/cytosol/widgets.py"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="" xlink:href="bundle/src/cdk/analysis/cytosol/platereader.py"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="" xlink:href="bundle/src/cdk/analysis/cytosol/__pycache__/widgets.cpython-312.pyc"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="" xlink:href="bundle/src/cdk/analysis/cytosol/__pycache__/platereader.cpython-312.pyc"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="text/markdown" xlink:href="bundle/main.md"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="image/png" xlink:href="bundle/experiments/Image1.png"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="image/png" xlink:href="bundle/experiments/Image2.png"/>
+  </item>
+  <item item-type="article-source-directory">
+    <instance media-type="application/x-directory" xlink:href="bundle/"/>
+  </item>
+</manifest>
