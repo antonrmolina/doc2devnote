@@ -137,6 +137,23 @@ Reagent concentrations are always given with units inline. Component names are b
 
 Literature citations use inline Markdown link syntax: `[[Wang *et al.* 2019](https://doi.org/10.1021/acssynbio.9b00456)]`. DOIs are always provided.
 
+## Notation and units
+
+These conventions are enforced by Vale (`.vale.ini` + `styles/nucleus/`, ported from the `nucleus-docs` Docs maintenance repo — see that directory if a rule needs updating, and keep this section in sync with it):
+
+- **Unit spacing**: a space between the magnitude and its unit (`10 mL`, not `10mL`); no spaces inside compound unit expressions (`ng/µL`, not `ng / µL`).
+- **Micro symbol**: `µ` not `u` (`µL`, `µM`, `µg`, `µm`).
+- **Degrees**: `°C` with a space before it (`55 °C`), never bare `55C`, `55 C`, or `degC`.
+- **Ion charges**: Unicode superscripts (`Mg²⁺`, `Na⁺`, `Ca²⁺`, `K⁺`), not `Mg2+` or `Mg++`.
+- **Chemical formulae**: Unicode subscripts for common formulae and absorbance/OD labels (`H₂O`, `MgCl₂`, `CaCl₂`, `OD₆₀₀`, `A₂₆₀`).
+- **House casing**: `rpm` (not `RPM`), `Kan` (not `KAN`), `kDa` (not `KDA`/`kDA`), and `4x`/`1x` (not `4X`/`1X`).
+- **Thousands separator**: group with a space, not a comma (`40 000 units`); numbers under 5 digits take no separator (NIST SP 811).
+- **Time abbreviations**: `h`, `min`, `s`, `d`, `yr`, `mo` — not spelled out (`hours`, `minutes`, etc.).
+- **Ranges**: avoid a bare hyphen between two numbers immediately before a unit — prefer `16 mM to 18 mM` or `(16–18) mM` over `16-18 mM` (NIST SP 811 §7.7).
+- **Mixtures**: spaces around `+` (`LB + Kan`, not `LB+Kan`).
+
+Run `vale output-devnotes/[devnote-slug]/main.md` before considering a DevNote publish-ready.
+
 ## What makes a DevNote complete vs a stub
 
 A complete DevNote has:

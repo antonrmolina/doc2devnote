@@ -70,3 +70,4 @@ Use these as style references when running ingest.
 - Never rewrite or reinterpret scientific content during migration — verbatim only
 - Human review is always required before a draft from ingest is published
 - `collections:` frontmatter placeholders marked `REVIEW: inferred —` need manual triage before publishing
+- Prose notation (units, chemical formulae, ion charges, etc.) is linted with Vale — config in `.vale.ini` and `styles/nucleus/`, ported from the `nucleus-docs` repo. Run `vale output-devnotes/[slug]/main.md` before publishing; see "Notation and units" in `skills/devnote-style-guide.md`

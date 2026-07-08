@@ -261,6 +261,8 @@ After running the skill, the human reviewer should:
       a reader to reproduce the experiment
 - [ ] Run `myst build` locally to confirm figures render correctly
       before pushing to the content repo
+- [ ] Run `vale index.md` (or `main.md`) and fix any flagged notation
+      issues — see "Notation and units" in the style guide
 
 ## Table formatting rules
 

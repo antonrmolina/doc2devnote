@@ -22,4 +22,16 @@
  pandoc input.docx -o content.md --extract-media=figures/
  ```
 
+ ## Checking DevNote prose
+
+ DevNote prose (units, chemical notation, ion charges, house casing, etc.) is linted with [Vale](https://vale.sh) against the rules in `styles/nucleus/`, ported from the `nucleus-docs` "Docs maintenance" repo. `startup.sh` installs `vale` if it's missing.
+
+ Run it against a DevNote's manuscript before publishing:
+
+ ```bash
+ vale output-devnotes/[devnote-slug]/main.md
+ ```
+
+ Target `main.md` files explicitly rather than `vale .` — some `output-devnotes/` subdirectories have build artifacts (`_build/`, `node_modules/`) checked in that aren't DevNote prose.
+
  
