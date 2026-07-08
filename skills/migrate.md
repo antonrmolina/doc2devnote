@@ -179,6 +179,10 @@ Add `myst build --execute --html` to the deploy workflow and install all noteboo
 
 Option B is the pragmatic default for already-committed DevNotes with no label infrastructure.
 
+## Post-migration QA
+
+Run `vale index.md` (or `main.md`) against the migrated manuscript and fix any flagged notation issues — see "Notation and units" in `devnote-style-guide.md`. Since migration is verbatim, pre-existing notation issues in the source are expected; fixing them is a formatting change, not a content rewrite, and is in scope here.
+
 ## What to ignore
 
 - `.git/`, `.git.disable/` directories

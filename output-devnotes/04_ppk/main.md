@@ -102,11 +102,11 @@ Following magnesium optimization of the PURE reaction using our custom energy so
 
 To test this, we initially titrated magnesium acetate in the range of 8 mM to 14 mM. Among these conditions, only the reaction containing 14 mM Mg$^{2+}$ demonstrated protein synthesis activity above baseline, suggesting that lower magnesium concentrations were insufficient in the presence of polyP ({ref}`fig5-PPK1`). Interestingly, in the CP/CK module, the addition of 30 mM polyP completely inhibited protein synthesis ({ref}`fig5-PPK1`), further supporting the idea that polyP may exert an inhibitory effect on the PURE system, likely through magnesium chelation. The observed rescue of activity in the PPK2 reactions at higher magnesium concentrations reinforces this hypothesis. Detailed reaction setup information is provided in the attached lab notebook entry.
 
-Subsequently, we extended the magnesium titration range and found that the PPK2-driven reaction reached optimal protein yields at 16–18 mM Mg$^{2+}$ ({ref}`fig6-PPK2`). This optimal concentration was approximately 10 mM higher than that required for the CP/CK module, underscoring the critical need to fine-tune magnesium concentrations for different energy regeneration modules in the PURE system. Importantly, these results demonstrate that the PPK2 module is capable of supporting DNA-driven protein synthesis in the PURE system, establishing it as a viable and effective energy regeneration module.
+Subsequently, we extended the magnesium titration range and found that the PPK2-driven reaction reached optimal protein yields at 16 mM to 18 mM Mg$^{2+}$ ({ref}`fig6-PPK2`). This optimal concentration was approximately 10 mM higher than that required for the CP/CK module, underscoring the critical need to fine-tune magnesium concentrations for different energy regeneration modules in the PURE system. Importantly, these results demonstrate that the PPK2 module is capable of supporting DNA-driven protein synthesis in the PURE system, establishing it as a viable and effective energy regeneration module.
 
 :::::{tab-set}
 
-::::{tab-item} 8-14 mM Mg
+::::{tab-item} 8 mM to 14 mM Mg
 :sync: tab2-1
 :::{figure} #fig:endpoint-exp3
 :name: fig5-PPK1
@@ -117,7 +117,7 @@ Final protein yields of PPK2-powered PURE reactions at different Mg$^{2+}$ conce
 :::
 ::::
 
-::::{tab-item} 14-20 mM Mg
+::::{tab-item} 14 mM to 20 mM Mg
 :sync: tab2-2
 :::{figure} #fig:endpoint-exp4
 :name: fig6-PPK2

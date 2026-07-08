@@ -20,6 +20,24 @@ else
   echo "  [ok] pandoc installed"
 fi
 
+# --- vale (prose linter) ---
+if command -v vale &>/dev/null; then
+  echo "  [ok] vale $(vale --version 2>/dev/null | awk '{print $3}')"
+else
+  echo "  [missing] vale — attempting install..."
+  if command -v brew &>/dev/null; then
+    brew install vale
+  elif command -v apt-get &>/dev/null; then
+    echo "  [error] vale is not packaged for apt. Install it manually: https://vale.sh/docs/install"
+    exit 1
+  else
+    echo "  [error] Could not install vale automatically."
+    echo "          Install it manually: https://vale.sh/docs/install"
+    exit 1
+  fi
+  echo "  [ok] vale installed"
+fi
+
 # --- Claude Code CLI ---
 if command -v claude &>/dev/null; then
   echo "  [ok] claude $(claude --version 2>/dev/null || echo '(version unavailable)')"
