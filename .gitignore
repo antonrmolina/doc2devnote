@@ -1,0 +1,6 @@
+_build/
+node_modules/
+.git.disable/
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store
