@@ -56,11 +56,11 @@ The membrane of the Base Cell is composed of 1-palmitoyl-2-oleoyl-sn-glycero-3-p
 | Liss-Rhod PE | 0.05 | 1301.71 | 1 | 4.96 |
 :::
 
-3. Vortex the lipid-in-oil mixture for 10 seconds.
+3. Vortex the lipid-in-oil mixture for 10 s.
 
-4. Place the glass vial in the bead-loaded hot bath at approximately 55 °C for 4 hours, shielding it from light with an aluminum foil cover. Do not use a lid, as the goal is to allow chloroform to evaporate from the lipids.
+4. Place the glass vial in the bead-loaded hot bath at approximately 55 °C for 4 h, shielding it from light with an aluminum foil cover. Do not use a lid, as the goal is to allow chloroform to evaporate from the lipids.
 
-5. Place the jar (with lid) containing lipid-in-oil solution at RT for 10 mins before using.
+5. Place the jar (with lid) containing lipid-in-oil solution at RT for 10 min before using.
 
 ## Inner Solution (Nucleus Cytosol)
 
@@ -110,21 +110,21 @@ A critical step in liposome preparation is the careful osmotic balance between t
 
 ## deGFP expression inside Base Cell
 
-Successful liposome preparations were imaged on a Cephla Squid+ microscope at 37 °C, and time-series data were collected to monitor deGFP expression. Representative images acquired at the start of incubation and after 3 hours are shown in {ref}`Image1` and {ref}`Image2`. Imaging used two channels: 488 nm for deGFP and 561 nm for rhodamine. At the start of incubation (t = 0), no deGFP signal was detected inside the cells. By the endpoint (t = 3 hours), a substantial fraction of cells exhibited deGFP fluorescence, indicating expression from the DNA template over time through cytosolic transcription and translation.
+Successful liposome preparations were imaged on a Cephla Squid+ microscope at 37 °C, and time-series data were collected to monitor deGFP expression. Representative images acquired at the start of incubation and after 3 h are shown in {ref}`Image1` and {ref}`Image2`. Imaging used two channels: 488 nm for deGFP and 561 nm for rhodamine. At the start of incubation (t = 0), no deGFP signal was detected inside the cells. By the endpoint (t = 3 h), a substantial fraction of cells exhibited deGFP fluorescence, indicating expression from the DNA template over time through cytosolic transcription and translation.
 
 :::::{tab-set}
 
 ::::{tab-item} Image 1
 :::{figure} experiments/Image1.png
 :label: Image1
-Combined green (488 nm) and red (561 nm) fluorescence channels. Timepoint 0 (t = 0) corresponds to 30 minutes after preparation of the inner solution, reflecting the time required to prepare liposomes.
+Combined green (488 nm) and red (561 nm) fluorescence channels. Timepoint 0 (t = 0) corresponds to 30 min after preparation of the inner solution, reflecting the time required to prepare liposomes.
 :::
 ::::
 
 ::::{tab-item} Image 2
 :::{figure} experiments/Image2.png
 :label: Image2
-Combined green (488 nm) and red (561 nm) fluorescence channels. Timepoint 0 (t = 0) corresponds to 30 minutes after preparation of the inner solution, reflecting the time required to prepare liposomes.
+Combined green (488 nm) and red (561 nm) fluorescence channels. Timepoint 0 (t = 0) corresponds to 30 min after preparation of the inner solution, reflecting the time required to prepare liposomes.
 :::
 ::::
 :::::

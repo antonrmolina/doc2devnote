@@ -51,7 +51,7 @@ Plasmid map of `pOpen-deGFP`.
 :::{table} SMix composition
 :label: SMix
 :align: center
-| **Component** | **Concentration in SMix (mM) [4X]** |
+| **Component** | **Concentration in SMix (mM) [4x]** |
 | --- | --- |
 | HEPES-KOH (pH 7.6) | 200 |
 | Potassium glutamate | 400 |
@@ -119,7 +119,7 @@ Plasmid map of `pOpen-deGFP`.
 | **Component** | **Stock Concentration** | **Final Concentration in Reaction** | 
 | --- | --- | --- |
 | PMix | 15 mg/mL | 1.8 mg/mL
-| SMix | 4X | 1X |
+| SMix | 4x | 1x |
 | Ribosomes | 10 $\mu$M | 1.8 $\mu$M |
 | tRNA | *varies* | 3.5 mg/mL |
 | pOpen-deGFP | *varies* | 3 nM |
@@ -168,7 +168,7 @@ Final protein yields of the reactions measured at steady state.
 
 ## Magnesium acetate titration in Nucleus Cytosol
 
-The concentration of magnesium ions is a critical determinant of protein synthesis efficiency in PURE reactions [[Li *et al.* 2017](https://doi.org/10.1080/21690731.2017.1327006)]. To assess the performance of Nucleus Cytosol across varying magnesium acetate concentrations and identify optimal conditions for future experiments, we performed a titration over a range of 4–12 mM in 2 mM increments. This range was selected based on prior results showing that 8 mM magnesium acetate yielded performance comparable to PURExpress, allowing us to explore both lower and higher concentrations for potential improvement. Detailed reaction setup and component concentrations are provided in the attached Lab Notebook Entry. For each condition, a 35 $\mu$L mastermix was prepared, and 10 $\mu$L aliquots were dispensed in triplicate into a 384-well plate for fluorescence measurements.
+The concentration of magnesium ions is a critical determinant of protein synthesis efficiency in PURE reactions [[Li *et al.* 2017](https://doi.org/10.1080/21690731.2017.1327006)]. To assess the performance of Nucleus Cytosol across varying magnesium acetate concentrations and identify optimal conditions for future experiments, we performed a titration over a range of 4 mM to 12 mM in 2 mM increments. This range was selected based on prior results showing that 8 mM magnesium acetate yielded performance comparable to PURExpress, allowing us to explore both lower and higher concentrations for potential improvement. Detailed reaction setup and component concentrations are provided in the attached Lab Notebook Entry. For each condition, a 35 $\mu$L mastermix was prepared, and 10 $\mu$L aliquots were dispensed in triplicate into a 384-well plate for fluorescence measurements.
 
 Magnesium acetate titration revealed that the initially used concentration of 8 mM was optimal for achieving the highest deGFP protein yield, comparable to the PURExpress positive control ({ref}`fig2-kinetics` and {ref}`fig2-endpoint`). Deviations from this concentration, either lower or higher, resulted in reduced overall protein expression.
 
