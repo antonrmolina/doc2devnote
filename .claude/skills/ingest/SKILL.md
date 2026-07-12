@@ -1,3 +1,8 @@
+---
+name: ingest
+description: Convert raw research materials (Word docs, Notion exports, mixed notebook/data directories) from external collaborators into a draft Nucleus DevNote for human review. Use when a collaborator hands over unstructured source content, as opposed to an existing Curvenote-format DevNote (see the migrate skill for that case).
+---
+
 # Nucleus DevNote Ingest Skill
 
 ## Purpose
@@ -10,7 +15,7 @@ is always required before publishing.
 
 ## Reference
 
-Always use `skills/devnote-style-guide.md` as the quality anchor.
+Always use `skills/devnote-style-guide.md` (repo root) as the quality anchor.
 The target output should match the structure, tone, and conventions
 observed in the migrated DevNotes. When in doubt, refer to a specific
 migrated example.

@@ -11,12 +11,12 @@
 ### `/ingest` — new or unstructured content
 Use when a collaborator provides raw materials: a Word doc, a Notion export, or a mixed directory of notebooks, data files, and figures. The output is a **draft** `main.md` that requires human review before publishing.
 
-Skill definition: `skills/ingest.md`
+Skill definition: `.claude/skills/ingest/SKILL.md` — invoke as `/ingest`
 
 ### `/migrate` — existing Curvenote/legacy DevNotes
 Use when converting a DevNote already written in the old Curvenote format (`main.md` + `curvenote.yml`) into the current MyST schema. Content is preserved verbatim — no rewriting.
 
-Skill definition: `skills/migrate.md`
+Skill definition: `.claude/skills/migrate/SKILL.md` — invoke as `/migrate`
 
 **When in doubt about which to use:** if the source has a `curvenote.yml`, use migrate. If it's a Word doc, Notion export, or folder of notebooks, use ingest.
 
