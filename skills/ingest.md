@@ -3,10 +3,12 @@
 ## Purpose
 
 Convert raw research materials from external collaborators into a draft
-Nucleus DevNote (`index.md`) suitable for human review and publication.
-Unlike the migrate skill, ingest involves restructuring and interpreting
-source content — the output is a draft, not a verbatim copy. Human review
-is always required before publishing.
+Nucleus DevNote (`main.md`) suitable for human review and publication.
+All scientific content — prose, parameter values, tables, and sequences —
+is reproduced verbatim from the source. The only permitted transformation
+is reordering sections to match the Nucleus style guide section order.
+If a style-guide section is missing from the source, flag it with REVIEW
+rather than authoring it. Human review is always required before publishing.
 
 ## Reference
 
@@ -47,11 +49,77 @@ Inventory the directory first:
 
 Pass the narrative content + file inventory to the skill.
 
+## Pandoc output conversion
+
+Pandoc converts `.docx` formatting to Markdown notation that does not
+always render correctly in MyST. Convert these after running pandoc:
+
+**Subscripts:** Pandoc produces `~text~` for subscript. MyST table cells
+require the inline role syntax. Convert all instances:
+```
+~N~  →  {sub}`N`
+```
+Exception: `~` used as "approximately" in prose (e.g., `~10 times`,
+`~2 min`) must NOT be converted — only convert `~N~` that originated
+from formatted subscript text in the source.
+
+**Superscripts:** Pandoc produces `^text^` for superscript. Convert:
+```
+^N^  →  {sup}`N`
+```
+
+**Underline:** Pandoc produces `[text]{.underline}`. Two distinct cases:
+
+*Typographical underline* (prose, captions, labels) — convert to MyST inline role:
+```
+[text]{.underline}  →  {underline}`text`
+```
+
+*Sequence region marker* (underline denotes a biological domain within a DNA/RNA
+sequence in a table cell, often spanning `<br>` line breaks and containing nested
+bold/italic formatting) — use HTML, which can wrap across `<br>` tags and contain
+other inline markup:
+```
+[SEQUENCE]{.underline}  →  <u>SEQUENCE</u>
+```
+These are structurally different: the first is typography, the second is a
+line-break-spanning region annotation that cannot be expressed with the MyST
+inline role.
+
+**Highlight:** Pandoc produces `[text]{.mark}`. No direct MyST equivalent —
+convert to plain text and flag:
+```
+[text]{.mark}  →  text<!-- REVIEW: highlighted in source -->
+```
+
+**Grid table column boundaries:** When a Word table has narrow columns,
+pandoc word-wraps cell content across multiple lines within each grid cell.
+This makes column boundaries hard to read and easy to misparse. Example:
+
+```
+| Full TX  | G_1    | G{u1,rbs2} | [sequence] |
+| unit     | T7t    | [s~4~u],   |            |
+|          | sCFP3A |            |            |
+```
+
+Here column 1 is `Full TX unit` and column 2 is `G_1 T7t sCFP3A` — they
+are separate cells. The failure mode is concatenating content from adjacent
+columns into one cell (e.g. writing `Full TX unit T7t sCFP3A` in column 1).
+
+When parsing pandoc grid tables:
+- Read each `|`-delimited column position independently across all wrapped lines
+- Reconstruct each cell by joining only the text at that column position
+- Never merge content across `|` boundaries
+
 ## Preprocessing checklist
 
 Before running the skill, confirm:
 - [ ] Narrative content is in plain markdown (pandoc conversion done
       if source was .docx)
+- [ ] Pandoc subscripts (`~N~`) converted to `{sub}`N``
+- [ ] Pandoc superscripts (`^N^`) converted to `{sup}`N``
+- [ ] Pandoc underlines (`[text]{.underline}`) converted: typographical → `{underline}`text``, sequence region markers → `<u>text</u>`
+- [ ] Pandoc highlights (`[text]{.mark}`) converted to plain text + REVIEW flag
 - [ ] Figures extracted to `figures/` directory
 - [ ] File inventory prepared (list of all data files, notebooks,
       sequence files)
@@ -77,6 +145,34 @@ or ambiguous, use — and add a REVIEW flag.
 **Table structure:** You may restructure tables to the Nucleus
 six-column schema and separate conditions into tab-sets. The
 organization of data may change. The data itself does not.
+Never drop a table column. Never drop a table row. If a column
+does not map to the six-column schema, retain it as-is.
+
+**Sequences:** Reproduce all DNA and RNA sequences in full.
+Never substitute an inline sequence table with a pointer to an
+external resource (e.g. Benchling, repository link). The DevNote
+must be self-contained. Links to external resources may be added
+alongside the inline content but do not replace it.
+
+**Missing style-guide sections:** If the source does not contain
+a section required by the style guide (e.g. Abstract, Conclusions),
+do not author one. Instead insert:
+```
+REVIEW: [section name] not present in source — add before publishing.
+```
+The only exception is section-level reordering: you may reorder
+top-level sections to match the style guide sequence, and must flag
+each reorder with a comment:
+```
+<!-- REORDERED: moved from "[original position]" to match style guide -->
+```
+
+**Section names:** If the source uses a non-standard section name
+that maps to a style-guide section (e.g. "Performance data" →
+"Results"), rename it and flag the change:
+```
+<!-- RENAMED: "Performance data" → "Results" to match style guide -->
+```
 
 ## Skill prompt
 
@@ -103,6 +199,17 @@ or ambiguous, use — and add a REVIEW flag.
 **Table structure:** You may restructure tables to the Nucleus
 six-column schema and separate conditions into tab-sets. The
 organization of data may change. The data itself does not.
+Never drop a table column or row. Retain all columns even if
+they do not map to the standard schema.
+
+**Sequences:** Reproduce all DNA and RNA sequences in full inline.
+Never substitute a sequence table with a link to Benchling or
+any external resource.
+
+**Missing sections:** If a section required by the style guide is
+absent from the source, insert a REVIEW flag — do not author content.
+If a source section name differs from the style guide name, rename it
+and insert a REVIEW comment noting the original name.
 
 ## Quality reference
 
@@ -138,28 +245,44 @@ not be ready to publish.
 
 ## Task
 
-1. Generate a complete `index.md` with correct frontmatter
-2. Map source content to DevNote section structure:
-   - Context (background and motivation)
-   - Methods (protocol, composition tables, instrument settings)
-   - Results (figures, interpretation)
-   - Specification (reproducible parameter summary)
-3. Reformat composition/reaction tables to the standard six-column
-   schema where possible. Use `—` for missing values. Do not bold
-   table cells — use plain text only, including totals rows.
-4. Convert figure references to MyST figure directives:
+1. Produce `main.md` with correct frontmatter. Transcribe all source
+   content verbatim — do not author, expand, or interpret.
+2. Reorder top-level sections to match the style guide sequence where
+   needed. Flag each reorder with a comment. If a style-guide section
+   is absent from the source, insert a REVIEW flag — do not write it.
+   Style guide section order:
+   - Overview / Introduction
+   - Composition / Methods
+   - Results
+   - Conclusions
+3. Reformat composition/reaction tables to MyST `:::{table}` directives.
+   Retain all source columns and rows exactly. If a column maps to the
+   standard six-column schema, use that header; if not, keep the
+   source column name. Use `—` for missing values. Plain text only
+   in cells — no bold, no inline markdown.
+   Convert pandoc subscript/superscript notation in table cells:
+   - `~N~` → `{sub}`N`` (subscript)
+   - `^N^` → `{sup}`N`` (superscript)
+   Do NOT convert `~` used as "approximately" in prose.
+4. Convert figure references to MyST figure directives with verbatim
+   captions from the source:
+   ```
    :::{figure} figures/[filename].png
    :label: fig-[slug]
    :width: 75%
-   [Caption from source]
+   [Caption verbatim from source]
    :::
-5. Suggest appropriate MyST directives for data files:
-   - `.gb` or `.dna` files → suggest seqviz directive, flag for review
-   - `.csv` files → note as candidate for composition.csv or
-     platemap.csv following Nucleus naming convention
-   - `.xlsx` files → note as candidate for results.xlsx
-6. Flag any fields that require human review using:
-   REVIEW: [reason]
+   ```
+   MyST auto-generates the "Figure N:" prefix from the label. Strip any
+   leading figure number from the source caption — do not write
+   "Figure 2: ..." or "**Figure 2**:..." in the caption body. The caption
+   should begin with the description text directly.
+5. Note data files for reviewer attention using REVIEW flags:
+   - `.gb` or `.dna` files → REVIEW: consider seqviz directive
+   - `.csv` files → REVIEW: confirm Nucleus naming convention
+   - `.xlsx` files → REVIEW: confirm naming
+6. Flag any field that requires human decision using:
+   `REVIEW: [specific reason]`
 
 ## Frontmatter schema
 
@@ -167,8 +290,8 @@ not be ready to publish.
 ---
 title: [concise, specific title]
 description: |
-  [one to two sentence summary of key finding — verbatim from source
-  abstract if present, otherwise synthesized]
+  [verbatim from source abstract if present — otherwise synthesize one sentence
+  from the content and flag: REVIEW: synthesized — verify before publishing]
 date: [from source metadata or REVIEW: not found]
 authors:
   - name: [from source]
@@ -196,6 +319,12 @@ specifications or formulations that may warrant CERN-OHL-P-2.0.
 - Remove negative or inconclusive results
 - Combine content from multiple experiments into a single claim
   unless the source explicitly does so
+- Author a section (Abstract, Conclusions, Results narrative) that
+  does not exist in the source — use a REVIEW flag instead
+- Substitute an inline sequence table or data table with a pointer
+  to an external resource (Benchling, repository, supplementary)
+- Drop table columns because they do not fit a standard schema
+- Silently rename section headings — always flag the rename
 
 ## Flag format
 
@@ -217,7 +346,7 @@ Examples:
 
 ```
 [devnote-slug]/
-├── index.md          # generated by this skill — requires human review
+├── main.md           # generated by this skill — requires human review
 ├── myst.yml          # minimal project config
 ├── figures/          # extracted from source (rename from imageN.png
 │   └── *.png         # to descriptive names during review)
@@ -275,19 +404,51 @@ Rules:
 - Totals row as plain text: `Total` not `**Total**`
 - Notes about mastermix assembly go below the table directive,
   not inside it
-- If source table uses non-standard columns (e.g. Bill of Materials
-  format), reconstruct from protocol text rather than copying columns
+- If source table uses non-standard columns, retain them as-is — do
+  not reconstruct or drop columns to fit the standard schema
+
+**Tab-sets for related tables:** Group ≥2 related sequential tables
+into a MyST tab-set. This preserves all content while improving
+information density. Approved for: DNA component tables (primers,
+input templates, full TX units, overlap PCR sequences), protocol
+tables (reaction setup variants, thermocycler protocols). Each table
+becomes a tab-item with a short descriptive tab label.
+
+**Tab-set placement:** Always place a tab-set *before* the prose or
+numbered steps that reference its tables via `{numref}`. When a
+`{numref}` reference appears in the document before the tab-set that
+defines the label (a forward reference), MyST may assign both tables
+in the tab-set the same number. Placing the tab-set first — so tables
+are defined before they are referenced — avoids this. This mirrors
+standard scientific writing practice: show the table, then refer to it
+in the steps.
+
+**Long sequences in table cells:** Break DNA/RNA sequences longer than
+~60 characters with `<br>` tags within the cell. This prevents
+off-page overflow while keeping sequences in-table. Content is verbatim.
+
+## References and Resources
+
+Do NOT include a standalone References section. `[](DOI)` inline links
+cause MyST to auto-generate a References section — a second one is
+redundant and will duplicate entries.
+
+DO include a **Resources** section for items that cannot be cited by
+DOI: Benchling links, CoLab notebooks, software documentation,
+sequence compiler tools, plasmid repositories. These would not appear
+in the auto-generated reference list.
 
 ## Differences from migrate skill
 
 | | migrate | ingest |
 | --- | --- | --- |
 | Source | Existing DevNote | Raw research materials |
-| Content | Verbatim | Restructured |
-| Section mapping | Preserve as-is | Map to Context/Methods/Results/Specification |
+| Content | Verbatim | Verbatim |
+| Section mapping | Preserve as-is | Reorder to style guide; flag each move |
+| Missing sections | N/A | REVIEW flag — do not author |
 | Quality bar | Already published | Draft — requires human review |
 | Figure handling | Copy paths as-is | Extract from Word doc, flag for renaming |
-| Table handling | Verbatim | Reconstruct to standard schema |
+| Table handling | Verbatim | Verbatim; reformat to MyST directive only |
 | Output | Near-publishable | Draft for review |
 
 ## Observations from first ingest test (Cal Poly, April 2026)

@@ -1,0 +1,62 @@
+version: 1
+project:
+  title: 'Tunable Protein Expression with Toehold Exchange Riboregulators'
+  subtitle: 'An RNA-to-Protein Module for the Nucleus Synthetic Cell Platform'
+  description: 'Demonstration of toehold exchange riboregulators for tunable translational control of protein expression in PURExpress and Nucleus Cytosol.'
+  authors:
+    - name: Samuel Schaffter
+      affiliations:
+        - name: NIST Cellular Engineering Group, Gaithersburg, Maryland, USA
+          city: Gaithersburg
+          state: Maryland
+          country: USA
+    - name: Fernanda Piorino
+      affiliations:
+        - name: NIST Cellular Engineering Group, Gaithersburg, Maryland, USA
+          city: Gaithersburg
+          state: Maryland
+          country: USA
+    - name: Eugenia Romantseva
+      affiliations:
+        - name: NIST Cellular Engineering Group, Gaithersburg, Maryland, USA
+          city: Gaithersburg
+          state: Maryland
+          country: USA
+  keywords:
+    - toehold exchange
+    - riboregulator
+    - RNA circuits
+    - translational control
+    - PURE
+    - cell-free expression
+    - ctRSD
+  abbreviations:
+    THE: toehold exchange
+    TMSE: toehold-mediated strand exchange
+    ctRSD: cotranscriptional RNA strand displacement
+    PURE: Protein synthesis Using Recombinant Elements
+    CFP: cyan fluorescent protein
+    sfGFP: superfolder green fluorescent protein
+    MB: molecular beacon
+    CDS: coding sequence
+    TX: transcription
+    rbs: ribosome binding sequence
+    RBS: ribosome binding site
+    IDT: Integrated DNA Technologies
+    DMSO: dimethyl sulfoxide
+  date: 2026-07-12
+  toc:
+    # - file: main.md
+    # - file: main-2.md
+    #   title: Draft v2 (verbatim)
+    - file: main-3.md
+      title: Draft v3 (verbatim + formatted)
+    - file: experiments/20250311-PURExpress-THE/analysis.ipynb
+      title: PURExpress Analysis Notebook
+    - file: experiments/20260512-Cytosol-THE/analysis.ipynb
+      title: Nucleus Cytosol Analysis Notebook
+  license: CC-BY-4.0
+  open_access: true
+  github: https://github.com/bnext-bio/nucleus-developer-notes
+site:
+  template: book-theme
