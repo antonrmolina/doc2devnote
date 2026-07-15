@@ -1,0 +1,34 @@
+version: 1
+extends: base.yml
+project:
+  id: 7b6aaa00-7351-4a7e-ba45-ade3f7332335
+  title: 'Tunable protein expression strength with toehold exchange riboregulators'
+  date: '2026-07-12'
+  authors:
+    - name: Samuel Schaffter
+      corresponding: true
+      email: samuel.schaffter@nist.gov
+      orcid: 0000-0002-7259-7374
+      affiliations:
+        - name: National Institute of Standards and Technology, Gaithersburg, MD 20899, USA
+    - name: Fernanda Piorino
+      affiliations:
+        - name: National Institute of Standards and Technology, Gaithersburg, MD 20899, USA
+    - name: Eugenia Romantseva
+      affiliations:
+        - name: National Institute of Standards and Technology, Gaithersburg, MD 20899, USA
+  keywords:
+    - toehold exchange
+    - riboregulator
+    - RNA circuits
+    - translational control
+    - cell-free expression
+  exports:
+    - format: meca
+    - format: typst
+      template: https://github.com/curvenote-templates/bnext.git
+      article: main-3.md
+      output: devnote.pdf
+      id: article
+  toc:
+    - file: main-3.md
