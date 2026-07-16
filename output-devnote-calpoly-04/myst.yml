@@ -3,6 +3,3 @@ project:
   title: "Liposome encapsulation: A tractable and reproducible approach"
   toc:
     - file: main.md
-site:
-  template: article-theme
-  nav: []

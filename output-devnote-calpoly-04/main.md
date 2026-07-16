@@ -1,6 +1,7 @@
 ---
 title: "Liposome encapsulation: A tractable and reproducible approach"
 description: |
+  REVIEW: synthesized — no abstract in source. Verify before publishing.
   PURExpress supplemented with sfGFP was encapsulated into liposomes via emulsion transfer using two extraction methods differing only in pipette tip size; the modified method (200 µL tip) produced greater sfGFP fluorescence intensity and liposome density than the standard method (1000 µL tip), though reproducibility remains limited by a protocol deviation in one replicate.
 date: 2026-06-08
 authors:
@@ -33,23 +34,25 @@ Liposome encapsulation is a useful method used within PURE systems to model the 
 
 ## Reagents
 
+<!-- vale nucleus.magnitude-unit-spacing = NO -->
 :::{table} Reagents used in this experiment.
 :label: tbl-reagents
 :align: center
-| Reagent | Product name | Manufacturer | Storage conditions |
-| --- | --- | --- | --- |
-| POPC | 16:0-18:1 PC, 25 mg/mL | Avanti Lipids | −20 °C |
-| Liss-Rhod-PE | 16:0 Liss Rhod PE, 1 mg/mL | Avanti Lipids | −20 °C |
-| Cholesterol | Cholesterol (D7), 1 EA | Avanti Lipids | −20 °C |
-| Mineral oil | Mineral oil, mixed weight | Thermo Scientific | RT |
-| Glucose | D-(+)-Glucose, 99% | Thermo Scientific | Cool, dry place |
-| PURExpress | PURExpress In Vitro Protein Synthesis Kit | NEB | −80 °C |
-| RNase inhibitor | RNase Inhibitor, Murine | NEB | −20 °C |
-| OptiPrep | OptiPrep Density Gradient Medium | Sigma-Aldrich | 4 °C |
-| DNA template | pJL1-sfGFP plasmid | — | −20 °C |
+| Reagent | Product name | Manufacturer | Catalog no. | Price | Storage conditions | Link |
+| --- | --- | --- | --- | --- | --- | --- |
+| POPC | 16:0-18:1 PC 25 mg/mL | Avanti Lipids | 850457C (500 mg) | $435.00 | −20 °C | [Avanti Research](https://www.avantiresearch.com/en-gb/products/product/850457-160-181-pc-popc) |
+| Liss-Rhod-PE | 16:0 Liss Rhod PE 1 mg/mL | Avanti Lipids | 810158C-1mg | $281.67 | −20 °C | [Avanti Research](https://www.avantiresearch.com/en-gb/products/product/810158-160-liss-rhod-pe) |
+| Cholesterol | Cholesterol (D7) 1 EA | Avanti Lipids | A84100M | $193.72 | −20 °C | [Avanti Research](https://www.avantiresearch.com/en-gb/products/product/4100-cholesterol-d7) |
+| Mineral oil | Mineral oil, mixed weight | Thermo Scientific | AC415080010 | $53.40 | RT | [Thermo Scientific](https://www.thermofisher.com/order/catalog/product/415080010) |
+| Glucose | D-(+)-Glucose, 99% | Thermo Scientific | A16828-36 | $41.65 | Cool place (thanks thermo) | [Thermo Scientific](https://www.thermofisher.com/order/catalog/product/A16828.36) |
+| PURExpress | PURExpress In Vitro Protein Synthesis Kit | NEB | E6800S | $295.00 | −80 °C | [NEB](https://www.neb.com/en-us/products/e6800-purexpress-invitro-protein-synthesis-kit) |
+| RNase inhibitor | RNase Inhibitor, Murine | NEB | M0314S | $81.00 | −20 °C | [NEB](https://www.neb.com/en-us/products/m0314-rnase-inhibitor-murine) |
+| OptiPrep | OptiPrep Density Gradient Medium | Sigma-Aldrich | D1556-250ML | $373.00 | 4 °C | [Sigma-Aldrich](https://www.sigmaaldrich.com/US/en/product/sigma/d1556) |
+| DNA template | pJL1-sfGFP plasmid | — | — | — | −20 °C | — |
 :::
 
-Catalog numbers: POPC 850457C (Avanti, 500 mg); Liss-Rhod-PE 810158C, 1 mg size (Avanti); Cholesterol A84100M (Avanti); Mineral oil AC415080010 (Thermo); Glucose A16828-36 (Thermo); PURExpress E6800S (NEB); RNase inhibitor M0314S (NEB); OptiPrep D1556-250ML (Sigma-Aldrich). **REVIEW:** Catalog number and supplier information for the pJL1-sfGFP plasmid were not provided in the source.
+<!-- vale nucleus.magnitude-unit-spacing = YES -->
+REVIEW: Catalog number, price, and link for the pJL1-sfGFP plasmid were not provided in the source.
 
 ## Lipid-oil solution preparation
 
@@ -100,7 +103,7 @@ Label 16 tubes, four each of: E (oil emulsion), T (transfer), and L (liposomes).
 
 Target osmolarity: 1259 mOsm. **REVIEW:** The stock concentration of pJL1-sfGFP plasmid DNA was not recorded in the source (field was left blank). The final concentration is stated as 10 ng/µL; stock concentration should be confirmed with the authors.
 
-After preparing the mastermix: pipette-mix each tube, then centrifuge at 5000 g (6685 rpm for tabletop centrifuges, r = 10 cm) for 10 s to 30 s to spin down bubbles. Check osmolarity using a Vapor Pressure Osmometer (pipette 10 µL onto the disc and press "close"). Transfer 8 µL into two wells of a 384-well plate for kinetics quantification; stop at first stop when dispensing to avoid introducing bubbles.
+Pipette mix each reaction, then centrifuge the reaction at 5000 g (6685 rpm for tabletop centrifuges, r = 10 cm) for 10 s to 30 s to spin down bubbles in the reaction.<!-- REVIEW: highlighted in source --> Check osmolarity using a Vapor Pressure Osmometer (pipette 10 µL onto the disc and press "close"). Transfer 8 µL into two wells of a 384-well plate for kinetics quantification; stop at first stop when dispensing to avoid introducing bubbles.
 
 ## Encapsulation protocol
 
@@ -230,7 +233,7 @@ Comparisons of modified and standard methods were performed using aliquots of th
 
 Due to time constraints, preparation of the final tube (modified method replicate 1) had to be rushed within the lab. This caused a breaking of the lipid interface debris leading to a sizable transfer within the pipette tip and less pellet being taken along with it. The debris was removed from tube L before resuspension but, as the results show, the replicate did not perform. In the future, to showcase the ease and reproducibility of this modified approach, it would be beneficial to have additional replicates and time dedicated solely to performing the experiment.
 
-# References
+# Resources
 
-1. CHEM 471 Engineering Synthetic Cells Laboratory Manual — Liposome Encapsulation. California Polytechnic State University, San Luis Obispo.
-2. Hello World Liposomes bench protocol (v0.1.3). **REVIEW:** Source document references this protocol but the file was not included in the submitted materials. Confirm reference details with authors.
+- CHEM 471 Engineering Synthetic Cells Laboratory Manual — Liposome Encapsulation. California Polytechnic State University, San Luis Obispo.
+- Hello World Liposomes bench protocol (v0.1.3). REVIEW: Source document references this protocol (Google Drive link provided) but the file was not included in the submitted materials. Confirm citation details with authors.
