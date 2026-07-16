@@ -1,0 +1,5 @@
+version: 1
+project:
+  title: "Liposome encapsulation: A tractable and reproducible approach"
+  toc:
+    - file: main.md
