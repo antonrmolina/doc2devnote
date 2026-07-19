@@ -13,6 +13,7 @@ project:
   jupyter: true
   exports:
     - format: meca
+      id: meca
     - format: typst
       template: https://github.com/curvenote-templates/bnext.git
       article: main.md
@@ -21,8 +22,6 @@ project:
   requirements:
     - environment.yml
   resources:
-    - src/**/*
-    - figures/**/*
     - figures/**/*
     - general/**/*
     - General/**/*
