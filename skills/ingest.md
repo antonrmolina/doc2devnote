@@ -365,11 +365,20 @@ version: 1
 project:
   title: [title]
   toc:
-    - file: index.md
+    - file: main.md
     - file: analysis.ipynb  # if present
+site:
+  template: book-theme
+  nav: []
 ```
 
-Do NOT include `site:` in the subdirectory myst.yml.
+Include `site:` when the devnote directory is standalone (no parent
+myst project). Without it, `myst start` and `myst build --html` will
+fail with "No configuration file found with 'site' property."
+
+Use `book-theme` for the site template. `article-theme` may not be
+available in all myst installations.
+
 Do NOT include `project.id`.
 
 ## Known gaps and human review checklist
@@ -390,8 +399,8 @@ After running the skill, the human reviewer should:
       a reader to reproduce the experiment
 - [ ] Run `myst build` locally to confirm figures render correctly
       before pushing to the content repo
-- [ ] Run `vale index.md` (or `main.md`) and fix any flagged notation
-      issues — see "Notation and units" in the style guide
+- [ ] Run `vale main.md` and fix any flagged notation issues —
+      see "Notation and units" in the style guide
 
 ## Table formatting rules
 
@@ -424,6 +433,28 @@ in the tab-set the same number. Placing the tab-set first — so tables
 are defined before they are referenced — avoids this. This mirrors
 standard scientific writing practice: show the table, then refer to it
 in the steps.
+
+**Figure numbering shifts from tab-sets and added table labels:** Two
+common transformations change the auto-numbering relative to the source:
+
+1. *Splitting a source figure into a tab-set* — a single source figure
+   that becomes two `:::{figure}` directives inside a tab-set will be
+   assigned two sequential numbers, shifting all subsequent figure
+   references by one.
+
+2. *Adding `:::{table}` labels to previously un-numbered composition
+   tables* — the source may explicitly number only one results table
+   (e.g. "Table 1"), but if the ingest adds labeled `:::{table}`
+   directives for all composition tables, MyST auto-numbers them all,
+   making the results table "Table 5" (or similar).
+
+These numbering shifts are **acceptable** — tab-set splitting is a
+standard structural transformation during ingest. The devnote's
+auto-numbering via `{ref}` labels is authoritative. In Conclusions
+and Results prose, always use `{ref}` cross-references (not hard-coded
+numbers) so that rendered figure and table numbers are always correct
+regardless of what the source numbered them. Add a REVIEW comment if
+the source's original reference is ambiguous.
 
 **Long sequences in table cells:** Break DNA/RNA sequences longer than
 ~60 characters with `<br>` tags within the cell. This prevents
@@ -472,3 +503,33 @@ template (CHEM 471). Key observations:
 - Two authors with institutional emails — both included in frontmatter
 - Source referenced a lab manual rather than primary literature —
   flagged but not blocking for publication
+
+## Observations from second ingest test (Cal Poly Team 4, June 2026)
+
+Source was a Word doc (CHEM 471) on liposome encapsulation comparing
+two methods. Key observations:
+
+- **Figures were embedded in the Word doc** despite appearing as `[]`
+  placeholders in the pandoc plain-text preview. Always use
+  `pandoc --extract-media=figures/` — do not assume images are absent
+  just because plain-text conversion shows `[]`.
+- **Full 7-column BOM table** — source had Reagent, Product Name,
+  Manufacturer, Catalog No., Price, Storage, Link. Fidelity rule
+  applies: never drop columns. All seven must appear in the output even
+  if they don't map to the standard schema.
+- **Catalog numbers containing unit-like strings** (e.g. `810158C-1mg`)
+  will be flagged by Vale's `magnitude-unit-spacing` rule. Suppress
+  with `<!-- vale nucleus.magnitude-unit-spacing = NO/YES -->` around
+  the table rather than changing the vendor identifier.
+- **Source figure references in Conclusions may be inconsistent** with
+  the actual figure numbering. Reproduce verbatim and add a REVIEW
+  flag — do not silently renumber.
+- **Highlighted text (`[text]{.mark}`)** appears in protocol steps to
+  flag safety-critical or easily-missed actions. Convert to plain text
+  and add `<!-- REVIEW: highlighted in source -->` inline.
+- **Modified vs. Standard protocol tab-set**: when two methods share
+  nearly identical steps differing only in one parameter, a tab-set
+  is the right structure — place it before the prose that references it.
+- **`{sup}` citation in Overview** without a DOI link will not
+  auto-generate a reference entry. Use a `# Resources` section for
+  unpublished sources (lab manuals, Google Drive protocols).

@@ -4,5 +4,5 @@ project:
   toc:
     - file: main.md
 site:
-  template: article-theme
+  template: book-theme
   nav: []
