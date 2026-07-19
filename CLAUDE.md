@@ -6,7 +6,7 @@
 
 ---
 
-## Two workflows, two skills
+## Three workflows, three skills
 
 ### `/ingest` — new or unstructured content
 Use when a collaborator provides raw materials: a Word doc, a Notion export, or a mixed directory of notebooks, data files, and figures. The output is a **draft** `main.md` that requires human review before publishing.
@@ -18,7 +18,12 @@ Use when converting a DevNote already written in the old Curvenote format (`main
 
 Skill definition: `skills/migrate.md`
 
-**When in doubt about which to use:** if the source has a `curvenote.yml`, use migrate. If it's a Word doc, Notion export, or folder of notebooks, use ingest.
+### `/submit` — MyST draft → Curvenote submission
+Use after ingest or migrate to prepare `curvenote.yml`, run venue checks, and submit to `bnext-devnotes`. Covers the two-file config structure (`curvenote.yml` + `base.yml`), draft file hygiene, the 7 venue submission checks, and collection selection.
+
+Skill definition: `skills/submit.md`
+
+**When in doubt about which to use:** if the source has a `curvenote.yml`, use migrate. If it's a Word doc, Notion export, or folder of notebooks, use ingest. Once the draft is reviewed, use submit.
 
 ---
 
@@ -47,11 +52,14 @@ This produces `content.md` and a `figures/` directory. Pass `content.md` to the 
 
 Completed DevNotes go in `output-devnotes/`. Each DevNote is a self-contained directory with:
 - `main.md` — the primary MyST manuscript
-- `myst.yml` — project config
+- `curvenote.yml` — per-DevNote config (extends `base.yml`); replaces `myst.yml` for submission
+- `base.yml` — shared venue-level config inherited by all DevNotes
 - `experiments/` — analysis notebooks, platemaps, raw data, output figures
 - `figures/` — standalone schematics/illustrations
 - `banner.webp` — banner image
 - `environment.yml` — conda environment spec
+
+Note: `curvenote.yml` and `myst.yml` cannot coexist — `curvenote.yml` is the single config file for submitted DevNotes. During ingest/drafting a `myst.yml` may be used; rename it to `myst-old.yml` before running the submit skill.
 
 The four canonical examples are in `output-devnotes/`:
 - `04_ppk/`

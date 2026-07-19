@@ -23,6 +23,35 @@ Not all sections are present in every DevNote:
 - `base-cell` has no dedicated Results H2 subsections — the results narrative is embedded directly under "Results" H1 with H2 subsections for each finding (Osmolarity Balance, deGFP expression).
 - `cytosol-lifetime` has an empty "Overview" section (H1 body is blank), which is a stub.
 
+## DNA sequence tables
+
+DNA sequence tables (primers, gene fragments, templates) use `<br>` line breaks inside table cells to prevent the sequence column from overflowing the page. Break at **~65 characters** of visible sequence per line, ignoring HTML tags (`<u>`, `</u>`) when counting. Inline markup (`**promoter**`, `*terminator*`, `<u>overlap region</u>`) must be preserved verbatim — never alter the sequence content itself.
+
+To reflow sequences in an existing table, run:
+
+```python
+def reflow(text, width=65):
+    text = text.replace('<br>', '')
+    result = []
+    count = 0
+    i = 0
+    while i < len(text):
+        if text[i] == '<':          # skip HTML tags, don't count them
+            end = text.index('>', i) + 1
+            result.append(text[i:end])
+            i = end
+            continue
+        result.append(text[i])
+        count += 1
+        i += 1
+        if count >= width:
+            result.append('<br>')
+            count = 0
+    return ''.join(result)
+```
+
+Apply per sequence cell; the first and last lines may be slightly shorter or longer due to tag overhead — that is acceptable.
+
 ## How composition tables are formatted
 
 Composition tables appear in all four DevNotes and follow a consistent pattern:
