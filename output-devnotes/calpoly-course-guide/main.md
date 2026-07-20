@@ -1,5 +1,5 @@
 ---
-title: "Cell-Free Gene Expression and Liposome Encapsulation: CSHL Synthetic Cells Course Lab Manual"
+title: "Synthetic Cells Course Lab Manual: Cell-free Gene Expression and Liposome Encapsulation"
 authors:
   - name: Javin P Oza
     corresponding: true
