@@ -17,6 +17,23 @@ The target output should match the structure, tone, and conventions
 observed in the migrated DevNotes. When in doubt, refer to a specific
 migrated example.
 
+## Before you start — confirm the slug
+
+Before creating any files or directories, ask the user:
+
+> **What should the slug be for this DevNote?**
+> The slug becomes the output directory name (`output-devnotes/<slug>/`) and the
+> MECA archive filename (`<slug>-archive.zip`). It should reflect the content's
+> identity — the lab, course, or experiment — not the venue or event where it
+> was presented. For example, `calpoly-course-guide` not `cshl-course-guide`.
+
+Use the confirmed slug for:
+- The output directory: `output-devnotes/<slug>/`
+- The archive filename in `base.yml`: `<slug>-archive.zip`
+
+Do not infer the slug from the source filename or event name without confirming
+with the user first.
+
 ## Input types
 
 ### Type 1 — Word document (Google Doc export)
@@ -268,7 +285,7 @@ not be ready to publish.
    captions from the source:
    ```
    :::{figure} figures/[filename].png
-   :label: fig-[slug]
+   :label: fig-[descriptive-slug]
    :width: 75%
    [Caption verbatim from source]
    :::
@@ -277,6 +294,29 @@ not be ready to publish.
    leading figure number from the source caption — do not write
    "Figure 2: ..." or "**Figure 2**:..." in the caption body. The caption
    should begin with the description text directly.
+
+   **Figure label naming:** Use a descriptive slug based on what the
+   figure shows (`fig-osmolarity`, `fig-emulsion-transfer`, `fig-popc`),
+   not the pandoc-generated filename (`fig-image5`). The slug becomes
+   the cross-reference target and must be meaningful to a reviewer.
+
+   **No caption in source:** If the source has no caption for a figure,
+   describe what the figure shows based on the image content and flag it:
+   ```
+   REVIEW: no caption in source — [brief description of what figure shows];
+   confirm caption with authors before publishing
+   ```
+   Do not leave the caption body blank.
+
+4a. After placing each figure directive, add an inline cross-reference
+    in the nearest sentence that discusses what the figure shows:
+    ```
+    ...osmolarity of the surrounding solution ({ref}`fig-osmolarity`).
+    ```
+    This connects the figure to its explanatory text. For figures that
+    appear before their discussion paragraph, place the reference at the
+    end of the first sentence in that paragraph.
+
 5. Note data files for reviewer attention using REVIEW flags:
    - `.gb` or `.dna` files → REVIEW: consider seqviz directive
    - `.csv` files → REVIEW: confirm Nucleus naming convention
@@ -377,8 +417,11 @@ Do NOT include `project.id`.
 After running the skill, the human reviewer should:
 
 - [ ] Fill in all `REVIEW:` flagged fields
-- [ ] Rename extracted figures from `image1.png` to descriptive names
-      matching the figure directive references in `index.md`
+- [ ] Rename extracted figures from `imageN.png` to descriptive names
+      matching the figure directive references in `main.md`; update
+      the figure directive paths and labels to match
+- [ ] Confirm all REVIEW-flagged figure captions with authors —
+      captions synthesized from image content are not verbatim from source
 - [ ] Verify composition table column values are correct — do not
       publish concentration values that haven't been confirmed
 - [ ] Confirm license — upgrade to CERN-OHL-P-2.0 if content
@@ -425,6 +468,30 @@ are defined before they are referenced — avoids this. This mirrors
 standard scientific writing practice: show the table, then refer to it
 in the steps.
 
+**Tab-set nesting depth:** Use exactly five colons for the tab-set
+fence, four for each tab-item fence, and three for nested directives
+(tables, figures) inside tab-items. Mismatched depths cause the MyST
+parser to misinterpret closing fences, rendering tab content as raw
+markdown code rather than rendered output:
+
+```
+:::::{tab-set}
+::::{tab-item} Label A
+:::{table} Title
+| ... |
+:::
+::::
+::::{tab-item} Label B
+:::{table} Title
+| ... |
+:::
+::::
+:::::
+```
+
+Never use the same colon depth for tab-items and their nested
+directives — the parser cannot distinguish their closing fences.
+
 **Long sequences in table cells:** Break DNA/RNA sequences longer than
 ~60 characters with `<br>` tags within the cell. This prevents
 off-page overflow while keeping sequences in-table. Content is verbatim.
@@ -452,6 +519,29 @@ in the auto-generated reference list.
 | Figure handling | Copy paths as-is | Extract from Word doc, flag for renaming |
 | Table handling | Verbatim | Verbatim; reformat to MyST directive only |
 | Output | Near-publishable | Draft for review |
+
+## Observations from second ingest test (CSHL course guide, July 2026)
+
+The source was a Word doc lab manual for a CSHL synthetic cells course
+covering cell-free protein synthesis and liposome encapsulation.
+
+- Source had no figure captions — pandoc extracted five images as
+  `image5.png`–`image9.png` with no associated text. Labels were
+  synthesized from the image content and flagged REVIEW.
+- Pandoc image numbering did not reflect source order — the source's
+  "osmolarity diagram" and "vesicle diagram" descriptions were swapped
+  relative to the extracted filenames. Always open extracted images
+  to verify content; do not rely on source alt-text or order.
+- Tab-set nesting broke during transformation: a script accidentally
+  collapsed tab-item fences (4 colons) to the same depth as table
+  fences (3 colons). The MyST parser could not distinguish tab-item
+  closers from table closers, rendering the second tab-item as raw
+  markdown. Fixed by restoring correct depth (5/4/3).
+- Source was a course guide (not a research DevNote) — Results and
+  Conclusions sections were absent and correctly omitted rather than
+  authored. REVIEW flags were inserted for author, date, and abstract.
+- Cross-references added inline for all five figures after placement,
+  connecting each figure to the sentence in the text that discusses it.
 
 ## Observations from first ingest test (Cal Poly, April 2026)
 

@@ -231,15 +231,23 @@ These appear during check/submit but do not block submission:
 - [ ] `description` field in article frontmatter is either absent (if synthesized and unreviewed) or confirmed with authors — a REVIEW-flagged description renders publicly on the listing card
 - [ ] Corresponding author email and ORCID in article frontmatter
 - [ ] `thumbnail` set explicitly in `curvenote.yml` (do not rely on auto-selection)
+- [ ] Thumbnail filename contains no special characters (semicolons, spaces, parentheses,
+  dots in the base name). Rename before setting in `curvenote.yml` — special characters
+  break URL resolution and the thumbnail will not display:
+  ```bash
+  mv "figures/Grace0306;0.25uM.png" figures/grace-0306-fluorescein.png
+  ```
 - [ ] Thumbnail has no alpha channel — check with:
   ```bash
   python3 -c "from PIL import Image; img=Image.open('figures/thumbnail.png'); print(img.mode)"
   ```
-  Mode must be `RGB`, not `RGBA`. If transparent, flatten with white background:
+  Mode must be `RGB`, not `RGBA`. If transparent, flatten — use **white** for schematics
+  and diagrams, **black** for fluorescence micrographs and dark-field images:
   ```python
   from PIL import Image
   img = Image.open('figures/thumbnail.png').convert('RGBA')
-  bg = Image.new('RGBA', img.size, (255, 255, 255, 255))
+  bg_color = (0, 0, 0, 255)      # black for fluorescence; use (255,255,255,255) for schematics
+  bg = Image.new('RGBA', img.size, bg_color)
   bg.paste(img, mask=img.split()[3])
   bg.convert('RGB').save('figures/thumbnail.png')
   ```

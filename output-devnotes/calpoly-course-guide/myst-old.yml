@@ -1,0 +1,7 @@
+version: 1
+project:
+  title: "Cell-Free Gene Expression and Liposome Encapsulation: CSHL Synthetic Cells Course Lab Manual"
+  toc:
+    - file: main.md
+site:
+  template: book-theme
