@@ -201,7 +201,7 @@ These appear during check/submit but do not block submission:
 
 ## Checklist before non-draft submission
 
-- [ ] All `REVIEW:` flags resolved in `main.md` frontmatter and body
+- [ ] All `REVIEW:` flags resolved in `main.md` frontmatter and body — including Resources section entries flagged with missing URLs (replace with `[Title](URL)` once URL is confirmed)
 - [ ] Corresponding author email and ORCID in article frontmatter
 - [ ] `thumbnail` set to a figure with a solid background
 - [ ] `banner.webp` added if available

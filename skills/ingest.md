@@ -137,10 +137,32 @@ interpretive language to prose from the source. If the source says
 author's words. You may move prose between sections but you may
 not change it.
 
+Subtle deviations that are still violations:
+- **Punctuation normalization** — adding or removing commas, semicolons,
+  or periods (e.g. "In the future, to showcase" vs. "In the future to
+  showcase") is a change.
+- **Synonym substitution** — replacing a word with a "better" one
+  (e.g. "nice" → "beneficial", "for performing" → "to performing") is
+  a change even if the meaning is similar.
+- **Clause restructuring** — splitting or joining sentences, reordering
+  clauses within a sentence, or converting a list to prose (or vice
+  versa) is a change.
+- **Omission** — dropping a word, phrase, or qualifier (e.g.
+  "unfortunately", "at hand", "within well") is a change.
+
+When in doubt: copy character-for-character.
+
 **Parameter values:** Never change a numeric value, unit,
 concentration, volume, temperature, wavelength, or duration
 from the source. Copy exactly as stated. If a value is missing
 or ambiguous, use — and add a REVIEW flag.
+
+**Permitted unit additions:** If the source omits a unit where one
+is clearly implied and unambiguous from context — e.g. a time column
+header `T = 3` where all values are in hours, or an osmolarity value
+`1259` in a table measuring mOsm/kg — adding the unit is an approved
+editorial improvement, not a fidelity violation. Do not add units
+where the unit is genuinely ambiguous.
 
 **Table structure:** You may restructure tables to the Nucleus
 six-column schema and separate conditions into tab-sets. The
@@ -191,10 +213,32 @@ interpretive language to prose from the source. If the source says
 author's words. You may move prose between sections but you may
 not change it.
 
+Subtle deviations that are still violations:
+- **Punctuation normalization** — adding or removing commas, semicolons,
+  or periods (e.g. "In the future, to showcase" vs. "In the future to
+  showcase") is a change.
+- **Synonym substitution** — replacing a word with a "better" one
+  (e.g. "nice" → "beneficial", "for performing" → "to performing") is
+  a change even if the meaning is similar.
+- **Clause restructuring** — splitting or joining sentences, reordering
+  clauses within a sentence, or converting a list to prose (or vice
+  versa) is a change.
+- **Omission** — dropping a word, phrase, or qualifier (e.g.
+  "unfortunately", "at hand", "within well") is a change.
+
+When in doubt: copy character-for-character.
+
 **Parameter values:** Never change a numeric value, unit,
 concentration, volume, temperature, wavelength, or duration
 from the source. Copy exactly as stated. If a value is missing
 or ambiguous, use — and add a REVIEW flag.
+
+**Permitted unit additions:** If the source omits a unit where one
+is clearly implied and unambiguous from context — e.g. a time column
+header `T = 3` where all values are in hours, or an osmolarity value
+`1259` in a table measuring mOsm/kg — adding the unit is an approved
+editorial improvement, not a fidelity violation. Do not add units
+where the unit is genuinely ambiguous.
 
 **Table structure:** You may restructure tables to the Nucleus
 six-column schema and separate conditions into tab-sets. The
@@ -283,6 +327,12 @@ not be ready to publish.
    - `.xlsx` files → REVIEW: confirm naming
 6. Flag any field that requires human decision using:
    `REVIEW: [specific reason]`
+7. **Post-draft verbatim audit:** After generating the draft, do a
+   sentence-by-sentence comparison of the Results and Conclusions
+   sections against the source. These sections are most prone to
+   silent paraphrasing. For each sentence, confirm: same words, same
+   punctuation, same word order. Flag any deviation you find and
+   correct it before returning the draft.
 
 ## Frontmatter schema
 
@@ -385,6 +435,9 @@ Do NOT include `project.id`.
 
 After running the skill, the human reviewer should:
 
+- [ ] Spot-check Results and Conclusions prose word-for-word against
+      the source — LLMs silently normalize punctuation, substitute
+      synonyms, and drop qualifiers. Any deviation is a fidelity violation.
 - [ ] Fill in all `REVIEW:` flagged fields
 - [ ] Rename extracted figures from `image1.png` to descriptive names
       matching the figure directive references in `index.md`
