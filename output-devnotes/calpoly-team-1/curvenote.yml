@@ -1,0 +1,27 @@
+version: 1
+extends: base.yml
+project:
+  id: ad98ecc0-8819-468e-b32e-791e1065c147
+  title: 'Combining Class I & Class II PPK2 in Synthetic Cells'
+  date: '2026-06-12'
+  authors:
+    - name: Jillian Yujuico
+      corresponding: true
+      email: jyujuico@calpoly.edu
+      affiliations:
+        - name: Department of Chemistry and Biochemistry, California Polytechnic State University, San Luis Obispo, CA, USA
+    - name: Zach Peterson
+      email: zpeter06@calpoly.edu
+      affiliations:
+        - name: Department of Chemistry and Biochemistry, California Polytechnic State University, San Luis Obispo, CA, USA
+  jupyter: false
+  keywords:
+    - PPK2
+    - cell-free protein synthesis
+    - synthetic cells
+    - liposome encapsulation
+    - enzyme kinetics
+    - PURExpress
+  thumbnail: ./figures/media/image1.png
+  toc:
+    - file: main.md

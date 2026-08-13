@@ -5,11 +5,14 @@ description: |
 date: 2026-04-03
 authors:
   - name: Emily Cook
-    affiliation: California Polytechnic University, San Luis Obispo
+    corresponding: true
     email: ecook11@calpoly.edu
+    affiliations:
+      - name: California Polytechnic University, San Luis Obispo
   - name: Suna Nguyen
-    affiliation: California Polytechnic University, San Luis Obispo
     email: snguy230@calpoly.edu
+    affiliations:
+      - name: California Polytechnic University, San Luis Obispo
 keywords:
   - PURExpress
   - cell-free protein synthesis

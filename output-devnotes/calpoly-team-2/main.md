@@ -5,11 +5,14 @@ description: |
 date: 2026-05-29
 authors:
   - name: Alyssa Chew
-    affiliation: California Polytechnic San Luis Obispo
+    corresponding: true
     email: achew05@calpoly.edu
+    affiliations:
+      - name: California Polytechnic San Luis Obispo
   - name: Eva Voss
-    affiliation: California Polytechnic San Luis Obispo
     email: ecvoss@calpoly.edu
+    affiliations:
+      - name: California Polytechnic San Luis Obispo
 keywords:
   - polyphosphate kinase
   - PPK2

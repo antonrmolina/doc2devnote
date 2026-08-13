@@ -1,0 +1,27 @@
+version: 1
+extends: base.yml
+project:
+  id: 401b2ed1-48a0-43ad-8209-a0458c83be9f
+  title: 'Studying the impact of Class 2 PPK, PaP PPK, on the PUREExpress System'
+  date: '2026-05-29'
+  authors:
+    - name: Alyssa Chew
+      corresponding: true
+      email: achew05@calpoly.edu
+      affiliations:
+        - name: Department of Chemistry and Biochemistry, California Polytechnic State University, San Luis Obispo, CA, USA
+    - name: Eva Voss
+      email: ecvoss@calpoly.edu
+      affiliations:
+        - name: Department of Chemistry and Biochemistry, California Polytechnic State University, San Luis Obispo, CA, USA
+  jupyter: false
+  keywords:
+    - polyphosphate kinase
+    - PPK2
+    - PUREExpress
+    - cell-free protein synthesis
+    - energy regeneration
+    - sfGFP
+  thumbnail: ./figures/media/image1.jpg
+  toc:
+    - file: main.md

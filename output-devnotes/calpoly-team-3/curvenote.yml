@@ -1,0 +1,27 @@
+version: 1
+extends: base.yml
+project:
+  id: 990d1432-9b98-41f5-bcb5-35dc441dc40b
+  title: 'PURExpress Cytosol Assembly with Broccoli 2/mScarlet Reporter'
+  date: '2026-04-03'
+  authors:
+    - name: Emily Cook
+      corresponding: true
+      email: ecook11@calpoly.edu
+      affiliations:
+        - name: Department of Chemistry and Biochemistry, California Polytechnic State University, San Luis Obispo, CA, USA
+    - name: Suna Nguyen
+      email: snguy230@calpoly.edu
+      affiliations:
+        - name: Department of Chemistry and Biochemistry, California Polytechnic State University, San Luis Obispo, CA, USA
+  jupyter: false
+  keywords:
+    - PURExpress
+    - cell-free protein synthesis
+    - Broccoli 2
+    - mScarlet
+    - RNA aptamer
+    - synthetic cell
+  thumbnail: ./figures/media/image1.png
+  toc:
+    - file: main.md

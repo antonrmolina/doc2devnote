@@ -5,11 +5,14 @@ description: |
 date: 2026-06-12
 authors:
   - name: Jillian Yujuico
-    affiliation: California Polytechnic University, San Luis Obispo
+    corresponding: true
     email: jyujuico@calpoly.edu
+    affiliations:
+      - name: California Polytechnic University, San Luis Obispo
   - name: Zach Peterson
-    affiliation: California Polytechnic University, San Luis Obispo
     email: zpeter06@calpoly.edu
+    affiliations:
+      - name: California Polytechnic University, San Luis Obispo
 keywords:
   - PPK2
   - cell-free protein synthesis
