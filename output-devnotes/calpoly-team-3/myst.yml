@@ -1,0 +1,9 @@
+version: 1
+project:
+  title: PURExpress Cytosol Assembly with Broccoli 2/mScarlet Reporter
+  toc:
+    - file: main.md
+    - file: Broccoli 2 and mScarlet Kinetics Graph.ipynb
+site:
+  template: book-theme
+  nav: []

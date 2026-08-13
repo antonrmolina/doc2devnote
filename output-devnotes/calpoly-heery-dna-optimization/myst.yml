@@ -1,0 +1,8 @@
+version: 1
+project:
+  title: Effects of a RNase Inhibitor and DNA concentration on Transcription and Translation in a PURExpress batch reaction
+  toc:
+    - file: main.md
+site:
+  template: book-theme
+  nav: []
