@@ -1,0 +1,8 @@
+version: 1
+project:
+  title: Combining Class I & Class II PPK2 in Synthetic Cells
+  toc:
+    - file: main.md
+site:
+  template: book-theme
+  nav: []
