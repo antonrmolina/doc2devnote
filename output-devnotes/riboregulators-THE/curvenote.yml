@@ -12,23 +12,35 @@ project:
       affiliations:
         - name: National Institute of Standards and Technology, Gaithersburg, MD 20899, USA
     - name: Fernanda Piorino
+      orcid: 0000-0002-9032-1400
       affiliations:
         - name: National Institute of Standards and Technology, Gaithersburg, MD 20899, USA
     - name: Eugenia Romantseva
+      email: eugenia.romantseva@nist.gov
+      orcid: 0000-0003-0929-7966
       affiliations:
         - name: National Institute of Standards and Technology, Gaithersburg, MD 20899, USA
+  jupyter: false
+  thumbnail: ./figures/the-mechanism.png
   keywords:
     - toehold exchange
     - riboregulator
     - RNA circuits
     - translational control
     - cell-free expression
+  downloads:
+    - id: article
+      title: Download Article PDF
+    - id: meca
+      title: Computational Archive
+      filename: riboregulators-the-archive.zip
   exports:
     - format: meca
+      id: meca
     - format: typst
       template: https://github.com/curvenote-templates/bnext.git
-      article: main-3.md
+      article: main.md
       output: devnote.pdf
       id: article
   toc:
-    - file: main-3.md
+    - file: main.md
