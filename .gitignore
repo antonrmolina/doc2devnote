@@ -4,3 +4,14 @@ node_modules/
 .ipynb_checkpoints/
 __pycache__/
 .DS_Store
+
+# Large binary source materials in input-docs/
+input-docs/**/*.docx
+input-docs/**/*.xlsx
+input-docs/**/*.pptx
+input-docs/**/*.pdf
+input-docs/**/*.jpg
+input-docs/**/*.png
+input-docs/**/*.svg
+input-docs/**/*.txt
+input-docs/**/*.ipynb

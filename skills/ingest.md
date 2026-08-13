@@ -17,23 +17,6 @@ The target output should match the structure, tone, and conventions
 observed in the migrated DevNotes. When in doubt, refer to a specific
 migrated example.
 
-## Before you start — confirm the slug
-
-Before creating any files or directories, ask the user:
-
-> **What should the slug be for this DevNote?**
-> The slug becomes the output directory name (`output-devnotes/<slug>/`) and the
-> MECA archive filename (`<slug>-archive.zip`). It should reflect the content's
-> identity — the lab, course, or experiment — not the venue or event where it
-> was presented. For example, `calpoly-course-guide` not `cshl-course-guide`.
-
-Use the confirmed slug for:
-- The output directory: `output-devnotes/<slug>/`
-- The archive filename in `base.yml`: `<slug>-archive.zip`
-
-Do not infer the slug from the source filename or event name without confirming
-with the user first.
-
 ## Input types
 
 ### Type 1 — Word document (Google Doc export)
@@ -154,10 +137,32 @@ interpretive language to prose from the source. If the source says
 author's words. You may move prose between sections but you may
 not change it.
 
+Subtle deviations that are still violations:
+- **Punctuation normalization** — adding or removing commas, semicolons,
+  or periods (e.g. "In the future, to showcase" vs. "In the future to
+  showcase") is a change.
+- **Synonym substitution** — replacing a word with a "better" one
+  (e.g. "nice" → "beneficial", "for performing" → "to performing") is
+  a change even if the meaning is similar.
+- **Clause restructuring** — splitting or joining sentences, reordering
+  clauses within a sentence, or converting a list to prose (or vice
+  versa) is a change.
+- **Omission** — dropping a word, phrase, or qualifier (e.g.
+  "unfortunately", "at hand", "within well") is a change.
+
+When in doubt: copy character-for-character.
+
 **Parameter values:** Never change a numeric value, unit,
 concentration, volume, temperature, wavelength, or duration
 from the source. Copy exactly as stated. If a value is missing
 or ambiguous, use — and add a REVIEW flag.
+
+**Permitted unit additions:** If the source omits a unit where one
+is clearly implied and unambiguous from context — e.g. a time column
+header `T = 3` where all values are in hours, or an osmolarity value
+`1259` in a table measuring mOsm/kg — adding the unit is an approved
+editorial improvement, not a fidelity violation. Do not add units
+where the unit is genuinely ambiguous.
 
 **Table structure:** You may restructure tables to the Nucleus
 six-column schema and separate conditions into tab-sets. The
@@ -208,10 +213,32 @@ interpretive language to prose from the source. If the source says
 author's words. You may move prose between sections but you may
 not change it.
 
+Subtle deviations that are still violations:
+- **Punctuation normalization** — adding or removing commas, semicolons,
+  or periods (e.g. "In the future, to showcase" vs. "In the future to
+  showcase") is a change.
+- **Synonym substitution** — replacing a word with a "better" one
+  (e.g. "nice" → "beneficial", "for performing" → "to performing") is
+  a change even if the meaning is similar.
+- **Clause restructuring** — splitting or joining sentences, reordering
+  clauses within a sentence, or converting a list to prose (or vice
+  versa) is a change.
+- **Omission** — dropping a word, phrase, or qualifier (e.g.
+  "unfortunately", "at hand", "within well") is a change.
+
+When in doubt: copy character-for-character.
+
 **Parameter values:** Never change a numeric value, unit,
 concentration, volume, temperature, wavelength, or duration
 from the source. Copy exactly as stated. If a value is missing
 or ambiguous, use — and add a REVIEW flag.
+
+**Permitted unit additions:** If the source omits a unit where one
+is clearly implied and unambiguous from context — e.g. a time column
+header `T = 3` where all values are in hours, or an osmolarity value
+`1259` in a table measuring mOsm/kg — adding the unit is an approved
+editorial improvement, not a fidelity violation. Do not add units
+where the unit is genuinely ambiguous.
 
 **Table structure:** You may restructure tables to the Nucleus
 six-column schema and separate conditions into tab-sets. The
@@ -285,7 +312,7 @@ not be ready to publish.
    captions from the source:
    ```
    :::{figure} figures/[filename].png
-   :label: fig-[descriptive-slug]
+   :label: fig-[slug]
    :width: 75%
    [Caption verbatim from source]
    :::
@@ -294,35 +321,18 @@ not be ready to publish.
    leading figure number from the source caption — do not write
    "Figure 2: ..." or "**Figure 2**:..." in the caption body. The caption
    should begin with the description text directly.
-
-   **Figure label naming:** Use a descriptive slug based on what the
-   figure shows (`fig-osmolarity`, `fig-emulsion-transfer`, `fig-popc`),
-   not the pandoc-generated filename (`fig-image5`). The slug becomes
-   the cross-reference target and must be meaningful to a reviewer.
-
-   **No caption in source:** If the source has no caption for a figure,
-   describe what the figure shows based on the image content and flag it:
-   ```
-   REVIEW: no caption in source — [brief description of what figure shows];
-   confirm caption with authors before publishing
-   ```
-   Do not leave the caption body blank.
-
-4a. After placing each figure directive, add an inline cross-reference
-    in the nearest sentence that discusses what the figure shows:
-    ```
-    ...osmolarity of the surrounding solution ({ref}`fig-osmolarity`).
-    ```
-    This connects the figure to its explanatory text. For figures that
-    appear before their discussion paragraph, place the reference at the
-    end of the first sentence in that paragraph.
-
 5. Note data files for reviewer attention using REVIEW flags:
    - `.gb` or `.dna` files → REVIEW: consider seqviz directive
    - `.csv` files → REVIEW: confirm Nucleus naming convention
    - `.xlsx` files → REVIEW: confirm naming
 6. Flag any field that requires human decision using:
    `REVIEW: [specific reason]`
+7. **Post-draft verbatim audit:** After generating the draft, do a
+   sentence-by-sentence comparison of the Results and Conclusions
+   sections against the source. These sections are most prone to
+   silent paraphrasing. For each sentence, confirm: same words, same
+   punctuation, same word order. Flag any deviation you find and
+   correct it before returning the draft.
 
 ## Frontmatter schema
 
@@ -405,23 +415,32 @@ version: 1
 project:
   title: [title]
   toc:
-    - file: index.md
+    - file: main.md
     - file: analysis.ipynb  # if present
+site:
+  template: book-theme
+  nav: []
 ```
 
-Do NOT include `site:` in the subdirectory myst.yml.
+Include `site:` when the devnote directory is standalone (no parent
+myst project). Without it, `myst start` and `myst build --html` will
+fail with "No configuration file found with 'site' property."
+
+Use `book-theme` for the site template. `article-theme` may not be
+available in all myst installations.
+
 Do NOT include `project.id`.
 
 ## Known gaps and human review checklist
 
 After running the skill, the human reviewer should:
 
+- [ ] Spot-check Results and Conclusions prose word-for-word against
+      the source — LLMs silently normalize punctuation, substitute
+      synonyms, and drop qualifiers. Any deviation is a fidelity violation.
 - [ ] Fill in all `REVIEW:` flagged fields
-- [ ] Rename extracted figures from `imageN.png` to descriptive names
-      matching the figure directive references in `main.md`; update
-      the figure directive paths and labels to match
-- [ ] Confirm all REVIEW-flagged figure captions with authors —
-      captions synthesized from image content are not verbatim from source
+- [ ] Rename extracted figures from `image1.png` to descriptive names
+      matching the figure directive references in `index.md`
 - [ ] Verify composition table column values are correct — do not
       publish concentration values that haven't been confirmed
 - [ ] Confirm license — upgrade to CERN-OHL-P-2.0 if content
@@ -433,8 +452,8 @@ After running the skill, the human reviewer should:
       a reader to reproduce the experiment
 - [ ] Run `myst build` locally to confirm figures render correctly
       before pushing to the content repo
-- [ ] Run `vale index.md` (or `main.md`) and fix any flagged notation
-      issues — see "Notation and units" in the style guide
+- [ ] Run `vale main.md` and fix any flagged notation issues —
+      see "Notation and units" in the style guide
 
 ## Table formatting rules
 
@@ -468,29 +487,27 @@ are defined before they are referenced — avoids this. This mirrors
 standard scientific writing practice: show the table, then refer to it
 in the steps.
 
-**Tab-set nesting depth:** Use exactly five colons for the tab-set
-fence, four for each tab-item fence, and three for nested directives
-(tables, figures) inside tab-items. Mismatched depths cause the MyST
-parser to misinterpret closing fences, rendering tab content as raw
-markdown code rather than rendered output:
+**Figure numbering shifts from tab-sets and added table labels:** Two
+common transformations change the auto-numbering relative to the source:
 
-```
-:::::{tab-set}
-::::{tab-item} Label A
-:::{table} Title
-| ... |
-:::
-::::
-::::{tab-item} Label B
-:::{table} Title
-| ... |
-:::
-::::
-:::::
-```
+1. *Splitting a source figure into a tab-set* — a single source figure
+   that becomes two `:::{figure}` directives inside a tab-set will be
+   assigned two sequential numbers, shifting all subsequent figure
+   references by one.
 
-Never use the same colon depth for tab-items and their nested
-directives — the parser cannot distinguish their closing fences.
+2. *Adding `:::{table}` labels to previously un-numbered composition
+   tables* — the source may explicitly number only one results table
+   (e.g. "Table 1"), but if the ingest adds labeled `:::{table}`
+   directives for all composition tables, MyST auto-numbers them all,
+   making the results table "Table 5" (or similar).
+
+These numbering shifts are **acceptable** — tab-set splitting is a
+standard structural transformation during ingest. The devnote's
+auto-numbering via `{ref}` labels is authoritative. In Conclusions
+and Results prose, always use `{ref}` cross-references (not hard-coded
+numbers) so that rendered figure and table numbers are always correct
+regardless of what the source numbered them. Add a REVIEW comment if
+the source's original reference is ambiguous.
 
 **Long sequences in table cells:** Break DNA/RNA sequences longer than
 ~60 characters with `<br>` tags within the cell. This prevents
@@ -520,29 +537,6 @@ in the auto-generated reference list.
 | Table handling | Verbatim | Verbatim; reformat to MyST directive only |
 | Output | Near-publishable | Draft for review |
 
-## Observations from second ingest test (CSHL course guide, July 2026)
-
-The source was a Word doc lab manual for a CSHL synthetic cells course
-covering cell-free protein synthesis and liposome encapsulation.
-
-- Source had no figure captions — pandoc extracted five images as
-  `image5.png`–`image9.png` with no associated text. Labels were
-  synthesized from the image content and flagged REVIEW.
-- Pandoc image numbering did not reflect source order — the source's
-  "osmolarity diagram" and "vesicle diagram" descriptions were swapped
-  relative to the extracted filenames. Always open extracted images
-  to verify content; do not rely on source alt-text or order.
-- Tab-set nesting broke during transformation: a script accidentally
-  collapsed tab-item fences (4 colons) to the same depth as table
-  fences (3 colons). The MyST parser could not distinguish tab-item
-  closers from table closers, rendering the second tab-item as raw
-  markdown. Fixed by restoring correct depth (5/4/3).
-- Source was a course guide (not a research DevNote) — Results and
-  Conclusions sections were absent and correctly omitted rather than
-  authored. REVIEW flags were inserted for author, date, and abstract.
-- Cross-references added inline for all five figures after placement,
-  connecting each figure to the sentence in the text that discusses it.
-
 ## Observations from first ingest test (Cal Poly, April 2026)
 
 The source was a Word doc following a DevNote-adjacent lab manual
@@ -562,3 +556,33 @@ template (CHEM 471). Key observations:
 - Two authors with institutional emails — both included in frontmatter
 - Source referenced a lab manual rather than primary literature —
   flagged but not blocking for publication
+
+## Observations from second ingest test (Cal Poly Team 4, June 2026)
+
+Source was a Word doc (CHEM 471) on liposome encapsulation comparing
+two methods. Key observations:
+
+- **Figures were embedded in the Word doc** despite appearing as `[]`
+  placeholders in the pandoc plain-text preview. Always use
+  `pandoc --extract-media=figures/` — do not assume images are absent
+  just because plain-text conversion shows `[]`.
+- **Full 7-column BOM table** — source had Reagent, Product Name,
+  Manufacturer, Catalog No., Price, Storage, Link. Fidelity rule
+  applies: never drop columns. All seven must appear in the output even
+  if they don't map to the standard schema.
+- **Catalog numbers containing unit-like strings** (e.g. `810158C-1mg`)
+  will be flagged by Vale's `magnitude-unit-spacing` rule. Suppress
+  with `<!-- vale nucleus.magnitude-unit-spacing = NO/YES -->` around
+  the table rather than changing the vendor identifier.
+- **Source figure references in Conclusions may be inconsistent** with
+  the actual figure numbering. Reproduce verbatim and add a REVIEW
+  flag — do not silently renumber.
+- **Highlighted text (`[text]{.mark}`)** appears in protocol steps to
+  flag safety-critical or easily-missed actions. Convert to plain text
+  and add `<!-- REVIEW: highlighted in source -->` inline.
+- **Modified vs. Standard protocol tab-set**: when two methods share
+  nearly identical steps differing only in one parameter, a tab-set
+  is the right structure — place it before the prose that references it.
+- **`{sup}` citation in Overview** without a DOI link will not
+  auto-generate a reference entry. Use a `# Resources` section for
+  unpublished sources (lab manuals, Google Drive protocols).

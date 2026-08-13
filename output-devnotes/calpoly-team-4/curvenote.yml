@@ -1,0 +1,28 @@
+version: 1
+extends: base.yml
+project:
+  id: 9e302e31-3dbb-494a-b8e3-5fc6d91ea941
+  title: 'Liposome encapsulation: A tractable and reproducible approach'
+  date: '2026-06-08'
+  authors:
+    - name: Chris Falcon
+      corresponding: true
+      email: ccfalcon@calpoly.edu
+      affiliations:
+        - name: Department of Chemistry and Biochemistry, California Polytechnic State University, San Luis Obispo, CA, USA
+    - name: Katie Drew
+      email: kdrew01@calpoly.edu
+      affiliations:
+        - name: Department of Chemistry and Biochemistry, California Polytechnic State University, San Luis Obispo, CA, USA
+  jupyter: false
+  keywords:
+    - liposome encapsulation
+    - emulsion transfer
+    - PURExpress
+    - cell-free protein synthesis
+    - synthetic cell
+    - sfGFP
+    - fluorescence microscopy
+  thumbnail: ./figures/fig1-timecourse.png
+  toc:
+    - file: main.md
